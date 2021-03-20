@@ -1,5 +1,8 @@
+let cart = [];
+
 exports.getCartPtr18 = function(req, res){
-    
+    res.header("Content-type: application/json");
+    res.send(cart);
 }
 
 exports.addItemPtr18 = function(req, res){

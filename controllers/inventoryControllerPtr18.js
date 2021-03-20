@@ -1,5 +1,5 @@
 exports.getInventoryPtr18 = function(req, res){
-    var inventory = [
+    let inventory = [
         {
             "sku": "59779-642",
             "name": "Napkin - Beverage 1 Ply",
@@ -52,6 +52,7 @@ exports.getInventoryPtr18 = function(req, res){
             "quantity": 17
         }
     ];
+
     res.header("Content-type: application/json");
     res.send(inventory);
 }
