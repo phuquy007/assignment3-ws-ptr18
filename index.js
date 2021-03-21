@@ -19,6 +19,7 @@ const cartRoute = require('./routes/cartRoutePtr18');
 app.use('/inventoryPtr18',cors(corsOptions), inventoryRoute);
 app.use('/cartPtr18',cors(corsOptions), cartRoute);
 
+
 app.listen(port, () =>{
     console.log(`Web Service is listening on port ${port}`);
 });
