@@ -1,22 +1,7 @@
 const e = require('express');
 const { inventory } = require('../models/inventoryPtr18');
 
-let cart = [ {
-    "sku": "57881-334",
-    "name": "Sugar - Crumb",
-    "price": 34.99,
-    "quantity": 4
-}, {
-    "sku": "67938-0993",
-    "name": "Fish - Halibut, Cold Smoked",
-    "price": 17.99,
-    "quantity": 1
-}, {
-    "sku": "52125-038",
-    "name": "Muffin Batt - Ban Dream Zero",
-    "price": 2.99,
-    "quantity": 2
-}];
+let cart = [];
 
 exports.getCartPtr18 = function(req, res){
     res.header("Content-type: application/json");
