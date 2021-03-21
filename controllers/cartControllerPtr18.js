@@ -1,3 +1,6 @@
+const e = require('express');
+const { inventory } = require('../models/inventoryPtr18');
+
 let cart = [];
 
 exports.getCartPtr18 = function(req, res){
@@ -6,8 +9,51 @@ exports.getCartPtr18 = function(req, res){
 }
 
 exports.addItemPtr18 = function(req, res){
-    var newItem = {"sku":req.body.sku, "name":req.body.name, "price": req.body.price, "quantity": req.body.quantity};
+    var itemToAdd = req.body.sku;
+
+    //let inventory = require('../models/inventoryPtr18').inventory;
+
+    inventory.forEach(item =>{
+        if(item.sku == itemToAdd){
+            if(item.quantity > 0){
+                if(cart.filter(i => i.sku == itemToAdd).length >0){
+                    var cartItem = cart.find(i => i.sku == itemToAdd);
+                    cartItem.quantity++;
+                }else{
+                    var newItem = JSON.parse(JSON.stringify(item));
+                    newItem.quantity=1;
+                    cart.push(newItem);
+                }
+                item.quantity--;
+            }
+        }else{
+           
+        }
+    })
 
     res.header("Content-type: application/json");
-    res.send(newItem);
+    res.send(cart);
+}
+
+
+exports.removeItemPtr18 = function(req, res){
+    var itemToDelete = req.body.sku;
+
+    deleteItem = cart.find(e => e.sku == itemToDelete);
+    if(deleteItem){
+        inventory.find(item => item.sku == itemToDelete).quantity += deleteItem.quantity;
+        const index = cart.indexOf(deleteItem);
+        cart.splice(index, 1);
+        console.log(inventory);
+        console.log(cart);
+    }
+    res.header("Content-type: application/json");
+    res.send(cart);
+}
+
+exports.checkoutPtr18 = function(req, res){
+    cart=[];
+
+    res.header("Content-type: application/json");
+    res.send(cart);
 }
