@@ -1,4 +1,5 @@
 exports.getInventoryPtr18 = function(req, res){
+<<<<<<< Updated upstream
     var inventory = [
         {
             "sku": "59779-642",
@@ -52,6 +53,9 @@ exports.getInventoryPtr18 = function(req, res){
             "quantity": 17
         }
     ];
+=======
+    let inventory = require('../models/inventoryPtr18').inventory;
+>>>>>>> Stashed changes
     res.header("Content-type: application/json");
     res.send(inventory);
 }
